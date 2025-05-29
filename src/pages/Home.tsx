@@ -65,18 +65,19 @@ function Home() {
         />
         <button type="submit">Search</button>
       </form>
+      <div className="w-full">
+        {error && <div>{error}</div>}
 
-      {error && <div>{error}</div>}
-
-      {loading ? (
-        <div>Loading...</div>
-      ) : (
-        <div className="grid grid-cols-1 sm:grids-cols2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {movies.map((movie) => (
-            <MovieCard movie={movie} key={movie.id} />
-          ))}
-        </div>
-      )}
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {movies.map((movie) => (
+              <MovieCard movie={movie} key={movie.id} />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

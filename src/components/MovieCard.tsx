@@ -1,4 +1,5 @@
 import { useMovieContext } from "../context/MovieContext";
+import FavouriteButton from "./FavouriteButton";
 
 interface Movie {
   id: string;
@@ -19,15 +20,15 @@ function MovieCard({ movie }: MovieCardProps) {
     else addToFavourites(movie);
   }
   return (
-    <div className="flex flex-col items-center p-4 my-8 bg-gray-100 text-black rounded-lg w-full max-w-xs hover:opacity-80 shadow-lg">
+    <div className="flex flex-col items-center p-4 my-8 bg-gray-100 text-black rounded-lg w-full hover:opacity-80 transition-opacity duration-300 shadow-lg">
       <div className="rounded-sm">
         <img
-          clasNames="rounded-lg"
+          className="rounded-lg"
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
           alt={movie.title}
         />
         <div>
-          <button onClick={onFavouriteClick}>heart</button>
+          <FavouriteButton onClick={onFavouriteClick} favourited={favourite} />
         </div>
       </div>
       <div>
