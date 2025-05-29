@@ -5,7 +5,7 @@ import { searchMovies, getPopularMovies } from "../services/api";
 //call useEffect, put function into it that you want to call when the thing in useEffect changes
 //check dependency array to see if change every render. If something in dependency array changes, we run the sueEffect function again
 type Movie = {
-  id: number;
+  id: string;
   title: string;
   release_date: string;
 };

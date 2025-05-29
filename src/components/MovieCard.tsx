@@ -1,14 +1,22 @@
+import { useMovieContext } from "../context/MovieContext";
+
 interface Movie {
-  title: string;
-  release_date: string;
+  id: string;
+  title?: string;
+  release_date?: string;
   poster_path?: string;
 }
 interface MovieCardProps {
   movie: Movie;
 }
 function MovieCard({ movie }: MovieCardProps) {
-  function onFavouriteClick() {
-    alert("clicked");
+  const { isFavourite, addToFavourites, removeFavourite } = useMovieContext();
+  const favourite = isFavourite(movie.id);
+
+  function onFavouriteClick(e: React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
+    if (favourite) removeFavourite(movie.id);
+    else addToFavourites(movie);
   }
   return (
     <div>
