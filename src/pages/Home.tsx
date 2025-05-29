@@ -71,7 +71,7 @@ function Home() {
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <div>
+        <div className="grid grid-cols-1 sm:grids-cols2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {movies.map((movie) => (
             <MovieCard movie={movie} key={movie.id} />
           ))}
