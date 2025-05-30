@@ -25,7 +25,7 @@ function MovieCard({ movie }: MovieCardProps) {
       {/* Image Background */}
       <div className="absolute inset-0 overflow-hidden rounded-lg">
         <img
-          className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110"
+          className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105"
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
           alt={movie.title}
         />
