@@ -39,13 +39,13 @@ function MovieCard({ movie }: MovieCardProps) {
               onClick={onFavouriteClick}
               favourited={favourite}
               className={
-                "shadow-xl bg-white bg-opacity-20 backdrop-blur-sm rounded-full p-2"
+                "shadow-xl bg-black bg-opacity-30 backdrop-blur-sm rounded-full p-2"
               }
             />
           </div>
         </div>
-        <div className="text-left font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <div>
+        <div className="text-left font-bold">
+          <div className="inline-block opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gray-700 bg-opacity-100 px-2 py-1 rounded-lg">
             <p>{formatDate(movie.release_date || "")}</p>
           </div>
         </div>
