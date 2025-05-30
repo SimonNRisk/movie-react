@@ -21,7 +21,7 @@ function MovieCard({ movie }: MovieCardProps) {
     else addToFavourites(movie);
   }
   return (
-    <div className="group relative center my-4 bg-gray-100 text-black rounded-lg w-full aspect-[2/3] hover:opacity-80 transition-opacity duration-300 shadow-lg hover:scale-105 transition-transform duration-300">
+    <div className="group relative center my-4 bg-gray-100 text-black rounded-lg w-full aspect-[2/3] hover:opacity-80 transition-opacity duration-300 shadow-2xl hover:scale-105 transition-transform duration-300">
       {/* Image Background */}
       <div className="absolute inset-0 overflow-hidden rounded-lg">
         <img
