@@ -1,7 +1,7 @@
 import { Heart } from "phosphor-react";
 
 type Props = {
-  onClick: () => void;
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void; // <-- updated
   favourited: boolean;
   className?: string;
 };
@@ -11,14 +11,14 @@ export default function FavouriteButton({
   className,
   favourited,
 }: Props) {
-  const heartClass = favourited ? "text-red-500" : "text-gray-400";
+  const heartClass = favourited ? "text-red-500" : "text-white";
   return (
     <button
       onClick={onClick}
       className={`hover:scale-110 transition-transform ${className}`}
     >
       <Heart
-        size={24}
+        size={48}
         className={`${heartClass} transition-colors`}
         weight="fill"
       />
