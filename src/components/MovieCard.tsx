@@ -44,9 +44,8 @@ function MovieCard({ movie }: MovieCardProps) {
             />
           </div>
         </div>
-        <div className="text-lg font-bold">
+        <div className="text-left font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <div>
-            <h3>{movie.title}</h3>
             <p>{formatDate(movie.release_date || "")}</p>
           </div>
         </div>
