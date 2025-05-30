@@ -1,5 +1,6 @@
 import { useMovieContext } from "../context/MovieContext";
 import FavouriteButton from "./FavouriteButton";
+import { formatDate } from "../../utils/DateFormatter";
 
 interface Movie {
   id: string;
@@ -46,7 +47,7 @@ function MovieCard({ movie }: MovieCardProps) {
         <div className="text-lg font-bold">
           <div>
             <h3>{movie.title}</h3>
-            <p>{movie.release_date}</p>
+            <p>{formatDate(movie.release_date || "")}</p>
           </div>
         </div>
       </div>
