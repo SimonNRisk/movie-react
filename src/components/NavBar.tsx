@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { searchMovies, getPopularMovies } from "../services/api";
+
 function NavBar() {
   return (
     <nav>
