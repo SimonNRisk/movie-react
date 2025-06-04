@@ -1,6 +1,6 @@
-import { useMovieContext } from "../context/MovieContext";
-import FavouriteButton from "./FavouriteButton";
-import { formatDate } from "../../utils/DateFormatter";
+import { useMovieContext } from '../context/MovieContext';
+import FavouriteButton from './FavouriteButton';
+import { formatDate } from '../../utils/DateFormatter';
 
 interface Movie {
   id: string;
@@ -10,18 +10,23 @@ interface Movie {
 }
 interface MovieCardProps {
   movie: Movie;
+  onClick?: (movie: Movie) => void;
 }
-function MovieCard({ movie }: MovieCardProps) {
+function MovieCard({ movie, onClick }: MovieCardProps) {
   const { isFavourite, addToFavourites, removeFavourite } = useMovieContext();
   const favourite = isFavourite(movie.id);
 
   function onFavouriteClick(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
+    e.stopPropagation();
     if (favourite) removeFavourite(movie.id);
     else addToFavourites(movie);
   }
   return (
-    <div className="group relative center my-4 bg-gray-100 text-black rounded-lg w-full aspect-[2/3] hover:opacity-80 transition-opacity duration-300 shadow-2xl hover:scale-105 transition-transform duration-300">
+    <div
+      className="group relative center my-4 bg-gray-100 text-black rounded-lg w-full aspect-[2/3] hover:opacity-80 transition-opacity duration-300 shadow-2xl hover:scale-105 transition-transform duration-300"
+      onClick={() => onClick?.(movie)}
+    >
       {/* Image Background */}
       <div className="absolute inset-0 overflow-hidden rounded-lg">
         <img
@@ -38,15 +43,13 @@ function MovieCard({ movie }: MovieCardProps) {
             <FavouriteButton
               onClick={onFavouriteClick}
               favourited={favourite}
-              className={
-                "shadow-xl bg-black bg-opacity-30 backdrop-blur-sm rounded-full p-2"
-              }
+              className={'shadow-xl bg-black bg-opacity-30 backdrop-blur-sm rounded-full p-2'}
             />
           </div>
         </div>
         <div className="text-left font-bold">
           <div className="inline-block opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gray-700 bg-opacity-100 px-2 py-1 rounded-lg">
-            <p>{formatDate(movie.release_date || "")}</p>
+            <p>{formatDate(movie.release_date || '')}</p>
           </div>
         </div>
       </div>
