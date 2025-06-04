@@ -6,6 +6,7 @@ import { getPopularMovies } from '../services/api';
 import { useMovieSearch } from '../hooks/useMovieSearch';
 import Modal from '../components/Modal';
 import { useState } from 'react';
+import Button from '../components/Button';
 
 interface Movie {
   id: string;
@@ -82,6 +83,7 @@ function Home() {
         title={selectedMovie?.title || 'Untitled'}
         message={`${selectedMovie?.overview || 'Unknown'}`}
       />
+      <Button description="test" colour="bg-blue-500" />
     </div>
   );
 }
