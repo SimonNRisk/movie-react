@@ -6,6 +6,18 @@ import { getPopularMovies } from '../services/api';
 import { useMovieSearch } from '../hooks/useMovieSearch';
 import Modal from '../components/Modal';
 import { useState } from 'react';
+import Button from '../components/Button';
+
+const MOVIES_PER_ROW = {
+  base: 1,
+  sm: 2,
+  md: 3,
+  lg: 4,
+};
+
+const DEFAULT_COLS = 3;
+
+const DEFAULT_MOVIE_COUNT = 2 * DEFAULT_COLS;
 
 interface Movie {
   id: string;
@@ -30,6 +42,7 @@ function Home() {
 
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showAllMovies, setShowAllMovies] = useState(false);
 
   function openModal(movie: Movie) {
     setSelectedMovie(movie);
@@ -40,6 +53,8 @@ function Home() {
     setIsModalOpen(false);
     setSelectedMovie(null);
   }
+
+  const displayedMovies = showAllMovies ? movies : movies.slice(0, DEFAULT_MOVIE_COUNT);
 
   useEffect(() => {
     const loadPopularMovies = async () => {
@@ -70,7 +85,7 @@ function Home() {
           <div>Loading...</div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
-            {movies.map((movie) => (
+            {displayedMovies.map((movie) => (
               <MovieCard movie={movie} key={movie.id} onClick={openModal} />
             ))}
           </div>
@@ -82,6 +97,13 @@ function Home() {
         title={selectedMovie?.title || 'Untitled'}
         message={`${selectedMovie?.overview || 'Unknown'}`}
       />
+      {!showAllMovies && (
+        <Button
+          description="Show more"
+          colour="bg-blue-500"
+          onClick={() => setShowAllMovies(true)}
+        />
+      )}
     </div>
   );
 }

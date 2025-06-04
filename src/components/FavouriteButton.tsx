@@ -1,7 +1,7 @@
 import { Heart } from 'phosphor-react';
 
 type Props = {
-  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void; // <-- updated
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   favourited: boolean;
   className?: string;
 };
