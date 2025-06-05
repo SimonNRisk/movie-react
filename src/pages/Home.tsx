@@ -7,17 +7,7 @@ import { useMovieSearch } from '../hooks/useMovieSearch';
 import Modal from '../components/Modal';
 import { useState } from 'react';
 import Button from '../components/Button';
-
-const MOVIES_PER_ROW = {
-  base: 1,
-  sm: 2,
-  md: 3,
-  lg: 4,
-};
-
-const DEFAULT_COLS = 3;
-
-const DEFAULT_MOVIE_COUNT = 2 * DEFAULT_COLS;
+import useColumnsPerRow from '../hooks/useColumnsPerRow';
 
 interface Movie {
   id: string;
@@ -54,7 +44,8 @@ function Home() {
     setSelectedMovie(null);
   }
 
-  const displayedMovies = showAllMovies ? movies : movies.slice(0, DEFAULT_MOVIE_COUNT);
+  const columns = useColumnsPerRow();
+  const displayedMovies = showAllMovies ? movies : movies.slice(0, columns * 2);
 
   useEffect(() => {
     const loadPopularMovies = async () => {
