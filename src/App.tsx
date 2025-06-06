@@ -5,6 +5,9 @@ import { Routes, Route } from 'react-router-dom';
 import { MovieProvider } from './context/MovieContext';
 import NavBar from './components/NavBar';
 import { FavouriteCountProvider } from './context/FavouritesCountContext';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
   return (
     <MovieProvider>
@@ -16,6 +19,7 @@ function App() {
             <Route path="/favourites" element={<Favourites />} />
           </Routes>
         </main>
+        <ToastContainer />
       </FavouriteCountProvider>
     </MovieProvider>
   );

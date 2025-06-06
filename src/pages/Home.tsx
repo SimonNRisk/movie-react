@@ -8,6 +8,8 @@ import Modal from '../components/Modal';
 import { useState } from 'react';
 import Button from '../components/Button';
 import useColumnsPerRow from '../hooks/useColumnsPerRow';
+import { useFavouriteCount } from '../context/FavouritesCountContext';
+import { toast } from 'react-toastify';
 
 interface Movie {
   id: string;
@@ -61,6 +63,19 @@ function Home() {
     };
     loadPopularMovies();
   }, []);
+
+  const { count } = useFavouriteCount();
+
+  const [prevCount, setPrevCount] = useState(count);
+
+  useEffect(() => {
+    if (count > prevCount) {
+      toast('Added to favourites!');
+    } else if (count < prevCount) {
+      toast('Removed from favourites');
+    }
+    setPrevCount(count);
+  }, [count]);
 
   return (
     <div>
