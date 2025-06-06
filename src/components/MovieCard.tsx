@@ -1,7 +1,7 @@
 import { useMovieContext } from '../context/MovieContext';
 import FavouriteButton from './FavouriteButton';
 import { formatDate } from '../../utils/DateFormatter';
-import { useFavouriteCount } from '../context/FavouritesCountContext';
+import { showAddFavouriteToast, showRemoveFavouriteToast } from '../utils/toast';
 
 interface Movie {
   id: string;
@@ -22,8 +22,10 @@ function MovieCard({ movie, onClick }: MovieCardProps) {
     e.stopPropagation();
     if (favourite) {
       removeFavourite(movie.id);
+      showRemoveFavouriteToast(movie.title);
     } else {
       addToFavourites(movie);
+      showAddFavouriteToast(movie.title);
     }
   }
   return (
