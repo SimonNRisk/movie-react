@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { searchMovies, getPopularMovies } from '../services/api';
+import { useFavouriteCount } from '../context/FavouritesCountContext';
 
 function NavBar() {
+  const { count } = useFavouriteCount();
   return (
     <nav>
       <div>
@@ -19,7 +21,7 @@ function NavBar() {
           to="/favourites"
           className="mr-6 mt-6 mb-6 p-2 rounded-md bg-gray-600 text-white hover:opacity-50"
         >
-          Favourites
+          Favourites {count > 0 && `(${count})`}
         </Link>
       </div>
     </nav>

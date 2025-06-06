@@ -1,6 +1,7 @@
 import { useMovieContext } from '../context/MovieContext';
 import FavouriteButton from './FavouriteButton';
 import { formatDate } from '../../utils/DateFormatter';
+import { useFavouriteCount } from '../context/FavouritesCountContext';
 
 interface Movie {
   id: string;
@@ -19,8 +20,11 @@ function MovieCard({ movie, onClick }: MovieCardProps) {
   function onFavouriteClick(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     e.stopPropagation();
-    if (favourite) removeFavourite(movie.id);
-    else addToFavourites(movie);
+    if (favourite) {
+      removeFavourite(movie.id);
+    } else {
+      addToFavourites(movie);
+    }
   }
   return (
     <div
