@@ -9,7 +9,7 @@ function Favourites() {
 
   return (
     <div>
-      <h2>Your Favourites</h2>
+      <h1 className="text-2xl">Your Favourites</h1>
       {isFavourites ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
           {favourites.map((movie) => (
@@ -18,8 +18,10 @@ function Favourites() {
         </div>
       ) : (
         <div>
-          <p> hi </p>
-          <Banner />
+          <Banner
+            title="No favourites added"
+            message="You have no favourites add. Add your favourite moves on the home page, and view them here!"
+          />
         </div>
       )}
     </div>

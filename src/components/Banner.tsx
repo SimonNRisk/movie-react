@@ -6,9 +6,9 @@ type BannerProps = {
 
 export default function Banner({ title, message, className }: BannerProps) {
   return (
-    <div>
-      <p> {title} </p>
-      <p className={className}> {message} </p>
+    <div className={className}>
+      <h1 className="text-xl"> {title} </h1>
+      <p> {message} </p>
     </div>
   );
 }
