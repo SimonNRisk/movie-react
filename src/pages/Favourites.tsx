@@ -1,26 +1,29 @@
 import { useMovieContext } from '../context/MovieContext';
 import MovieCard from '../components/MovieCard';
+import Banner from '../components/Banner';
 
 function Favourites() {
   const { favourites } = useMovieContext();
 
-  if (favourites) {
-    return (
-      <div>
-        <h2>Your Favourites</h2>
+  const isFavourites = favourites.length != 0;
+
+  return (
+    <div>
+      <h1 className="text-2xl">Your Favourites</h1>
+      {isFavourites ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
           {favourites.map((movie) => (
             <MovieCard movie={movie} key={movie.id} />
           ))}
         </div>
-      </div>
-    );
-  }
-
-  return (
-    <div>
-      <h2>No favourite movies yet</h2>
-      <p>Start adding movies to your favourites and they will appear here</p>
+      ) : (
+        <div>
+          <Banner
+            title="No favourites added"
+            message="You have no favourites add. Add your favourite moves on the home page, and view them here!"
+          />
+        </div>
+      )}
     </div>
   );
 }
