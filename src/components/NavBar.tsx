@@ -8,7 +8,9 @@ function NavBar() {
   return (
     <nav>
       <div>
-        <Link to="/">Movie App</Link>
+        <Link to="/" className="text-2xl font-bold">
+          Movie App
+        </Link>
       </div>
       <div className="flex flex-row justify-left">
         <Link
