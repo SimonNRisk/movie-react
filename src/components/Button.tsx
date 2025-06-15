@@ -13,7 +13,10 @@ export default function Button({
 }: ButtonProps) {
   return (
     <div>
-      <button onClick={onClick} className={`text-white px-4 py-2 rounded ${colour}`}>
+      <button
+        onClick={onClick}
+        className={`text-white px-4 py-2 rounded ${colour} m-2 shadow-lg hover:opacity-70 transition duration-300`}
+      >
         {description} {count ? `(${count})` : null}
       </button>
     </div>
