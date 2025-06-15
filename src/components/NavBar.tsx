@@ -5,7 +5,7 @@ import { useFavouriteCount } from '../context/FavouritesCountContext';
 import Button from './Button';
 
 function NavBar() {
-  const { count } = useFavouriteCount();
+  const { favouritesCount } = useFavouriteCount();
   return (
     <nav>
       <div>
@@ -17,11 +17,8 @@ function NavBar() {
         <Link to="/">
           <Button description="Home" />
         </Link>
-        <Link
-          to="/favourites"
-          className="mr-6 mt-6 mb-6 p-2 rounded-md bg-gray-600 text-white hover:opacity-50"
-        >
-          Favourites {count > 0 && `(${count})`}
+        <Link to="/favourites">
+          <Button description="Favourites" count={favouritesCount} />
         </Link>
       </div>
     </nav>
