@@ -21,6 +21,7 @@ function Favourites() {
           <Banner
             title="No favourites added"
             message="You have no favourites add. Add your favourite moves on the home page, and view them here!"
+            type="info"
           />
         </div>
       )}
