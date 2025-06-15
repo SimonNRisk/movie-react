@@ -89,11 +89,13 @@ function Home() {
         message={`${selectedMovie?.overview || 'Unknown'}`}
       />
       {!showAllMovies && (
-        <Button
-          description="Show more"
-          colour="bg-blue-500"
-          onClick={() => setShowAllMovies(true)}
-        />
+        <div className="my-6">
+          <Button
+            description="Show more"
+            colour="bg-blue-500"
+            onClick={() => setShowAllMovies(true)}
+          />
+        </div>
       )}
     </div>
   );
