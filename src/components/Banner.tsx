@@ -15,7 +15,7 @@ const bannerStyleMap: Record<BannerType, string> = {
 export default function Banner({ title, message, type }: BannerProps) {
   const typeStyle = bannerStyleMap[type];
   return (
-    <div className={`py-6 rounded-lg border border-2 ${typeStyle}`}>
+    <div className={`py-6 rounded-lg border border-2 text-left px-4 ${typeStyle}`}>
       <h1 className="text-xl"> {title} </h1>
       <p> {message} </p>
     </div>

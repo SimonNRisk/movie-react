@@ -9,7 +9,7 @@ function Favourites() {
 
   return (
     <div>
-      <h1 className="text-2xl">Your Favourites</h1>
+      <h1 className="text-2xl mb-4">Your Favourites</h1>
       {isFavourites ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
           {favourites.map((movie) => (
