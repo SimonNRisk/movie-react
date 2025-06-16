@@ -2,7 +2,7 @@ import { useMovieContext } from '../context/MovieContext';
 import MovieCard from '../components/MovieCard';
 import Banner from '../components/Banner';
 import { useState, useMemo } from 'react';
-import Modal from '../components/Modal';
+import MovieModal from '../components/MovieModal';
 
 interface Movie {
   id: string;
@@ -97,7 +97,7 @@ function Favourites() {
           {sortedFavourites.map((movie) => (
             <MovieCard movie={movie} key={movie.id} onClick={openModal} />
           ))}
-          <Modal
+          <MovieModal
             isOpen={isModalOpen}
             onClose={closeModal}
             title={selectedMovie?.title || 'Untitled'}

@@ -4,7 +4,7 @@ import MovieCard from '../components/MovieCard';
 import SearchBar from '../components/SearchBar';
 import { getPopularMovies } from '../services/api';
 import { useMovieSearch } from '../hooks/useMovieSearch';
-import Modal from '../components/Modal';
+import MovieModal from '../components/MovieModal';
 import { useState } from 'react';
 import Button from '../components/Button';
 import useColumnsPerRow from '../hooks/useColumnsPerRow';
@@ -82,7 +82,7 @@ function Home() {
           </div>
         )}
       </div>
-      <Modal
+      <MovieModal
         isOpen={isModalOpen}
         onClose={closeModal}
         title={selectedMovie?.title || 'Untitled'}
