@@ -3,7 +3,13 @@ import MovieCard from '../components/MovieCard';
 import Banner from '../components/Banner';
 import { useState, useMemo } from 'react';
 
-type SortOption = 'vote' | 'popularity' | 'alphabetical' | 'release_date' | undefined;
+type SortOption =
+  | 'vote'
+  | 'popularity'
+  | 'alphabetical'
+  | 'release_date'
+  | 'release_date_rev'
+  | undefined;
 
 function Favourites() {
   const { favourites } = useMovieContext();
@@ -31,6 +37,10 @@ function Favourites() {
           (a, b) =>
             new Date(b.release_date ?? '').getTime() - new Date(a.release_date ?? '').getTime()
         );
+      case 'release_date_rev':
+        return sorted.sort(
+          (a, b) => new Date(a.release_date).getTime() - new Date(b.release_date).getTime()
+        );
       default:
         return sorted;
     }
@@ -55,6 +65,7 @@ function Favourites() {
           <option value="popularity">Popularity</option>
           <option value="alphabetical">Alphabetical (A-Z)</option>
           <option value="release_date">Release Date (Newest)</option>
+          <option value="release_date_rev">Release Date (Oldest)</option>
         </select>
       </div>
 
