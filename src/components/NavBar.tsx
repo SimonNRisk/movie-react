@@ -2,9 +2,10 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { searchMovies, getPopularMovies } from '../services/api';
 import { useFavouriteCount } from '../context/FavouritesCountContext';
+import Button from './Button';
 
 function NavBar() {
-  const { count } = useFavouriteCount();
+  const { favouritesCount } = useFavouriteCount();
   return (
     <nav>
       <div>
@@ -13,17 +14,11 @@ function NavBar() {
         </Link>
       </div>
       <div className="flex flex-row justify-left">
-        <Link
-          to="/"
-          className="mr-6 mt-6 mb-6 p-2 rounded-md bg-gray-600 text-white hover:opacity-50"
-        >
-          Home
+        <Link to="/">
+          <Button description="Home" />
         </Link>
-        <Link
-          to="/favourites"
-          className="mr-6 mt-6 mb-6 p-2 rounded-md bg-gray-600 text-white hover:opacity-50"
-        >
-          Favourites {count > 0 && `(${count})`}
+        <Link to="/favourites">
+          <Button description="Favourites" count={favouritesCount} />
         </Link>
       </div>
     </nav>
