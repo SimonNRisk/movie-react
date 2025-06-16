@@ -1,11 +1,12 @@
-interface ModalProps {
+interface MovieModalProps {
   isOpen: boolean;
   onClose: () => void;
   title: string;
   message: string;
+  vote_average?: number;
 }
 
-export default function Modal({ isOpen, onClose, title, message }: ModalProps) {
+export default function Modal({ isOpen, onClose, title, message, vote_average }: MovieModalProps) {
   if (!isOpen) return null;
   function handleBackdropClick(e: React.MouseEvent<HTMLDivElement>) {
     if (e.target == e.currentTarget) onClose();
@@ -23,6 +24,7 @@ export default function Modal({ isOpen, onClose, title, message }: ModalProps) {
           ×
         </button>
         <h3 className="text-xl font-semibold mb-2">{title}</h3>
+        <p>Rating = {vote_average?.toFixed(1)}</p>
         <p className="text-gray-700">{message}</p>
       </div>
     </div>

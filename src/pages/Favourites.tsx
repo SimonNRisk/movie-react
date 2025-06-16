@@ -10,6 +10,7 @@ interface Movie {
   release_date?: string;
   poster_path?: string;
   overview?: string;
+  vote_average?: number;
 }
 
 type SortOption =
@@ -102,6 +103,7 @@ function Favourites() {
             onClose={closeModal}
             title={selectedMovie?.title || 'Untitled'}
             message={`${selectedMovie?.overview || 'Unknown'}`}
+            vote_average={selectedMovie ? selectedMovie.vote_average : undefined}
           />
         </div>
       ) : (
