@@ -1,9 +1,16 @@
 import { useMovieContext } from '../context/MovieContext';
 import MovieCard from '../components/MovieCard';
 import Banner from '../components/Banner';
+import { useState, useMemo } from 'react';
 
 function Favourites() {
   const { favourites } = useMovieContext();
+
+  const [sortBy, setSortBy] = useState();
+
+  const sortedFavourites = useMemo(() => {
+    const sorted = [...favourites];
+  }, [favourites, sortBy]);
 
   const isFavourites = favourites.length != 0;
 
