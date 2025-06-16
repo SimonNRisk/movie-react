@@ -2,7 +2,7 @@ import { createContext, useState, useContext, useEffect } from 'react';
 
 interface Movie {
   id: string;
-  title?: string;
+  title: string;
   release_date: string;
   vote_average: number;
   popularity: number;

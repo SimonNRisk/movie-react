@@ -3,7 +3,7 @@ import MovieCard from '../components/MovieCard';
 import Banner from '../components/Banner';
 import { useState, useMemo } from 'react';
 
-type SortOption = 'vote' | 'popularity' | undefined;
+type SortOption = 'vote' | 'popularity' | 'alphabetical' | undefined;
 
 function Favourites() {
   const { favourites } = useMovieContext();
@@ -19,6 +19,8 @@ function Favourites() {
         return sorted.sort((a, b) => b.vote_average - a.vote_average);
       case 'popularity':
         return sorted.sort((a, b) => b.popularity - a.popularity);
+      case 'alphabetical':
+        return sorted.sort((a, b) => a.title.localeCompare(b.title));
       default:
         return sorted;
     }
@@ -41,6 +43,7 @@ function Favourites() {
         >
           <option value="vote">Rating</option>
           <option value="popularity">Popularity</option>
+          <option value="alphabetical">Alphabetical (A-Z)</option>
         </select>
       </div>
 
