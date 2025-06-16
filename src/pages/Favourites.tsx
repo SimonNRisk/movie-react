@@ -2,6 +2,15 @@ import { useMovieContext } from '../context/MovieContext';
 import MovieCard from '../components/MovieCard';
 import Banner from '../components/Banner';
 import { useState, useMemo } from 'react';
+import Modal from '../components/Modal';
+
+interface Movie {
+  id: string;
+  title?: string;
+  release_date?: string;
+  poster_path?: string;
+  overview?: string;
+}
 
 type SortOption =
   | 'vote'
@@ -48,6 +57,20 @@ function Favourites() {
 
   const isFavourites = favourites.length != 0;
 
+  const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  function openModal(movie: Movie) {
+    setSelectedMovie(movie);
+    setIsModalOpen(true);
+  }
+
+  function closeModal() {
+    setIsModalOpen(false);
+    setSelectedMovie(null);
+  }
+
   return (
     <div>
       <h1 className="text-2xl mb-4">Your Favourites</h1>
@@ -72,8 +95,14 @@ function Favourites() {
       {isFavourites ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
           {sortedFavourites.map((movie) => (
-            <MovieCard movie={movie} key={movie.id} />
+            <MovieCard movie={movie} key={movie.id} onClick={openModal} />
           ))}
+          <Modal
+            isOpen={isModalOpen}
+            onClose={closeModal}
+            title={selectedMovie?.title || 'Untitled'}
+            message={`${selectedMovie?.overview || 'Unknown'}`}
+          />
         </div>
       ) : (
         <div>
