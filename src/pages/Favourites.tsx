@@ -20,7 +20,12 @@ function Favourites() {
       case 'popularity':
         return sorted.sort((a, b) => b.popularity - a.popularity);
       case 'alphabetical':
-        return sorted.sort((a, b) => a.title.localeCompare(b.title));
+        return sorted.sort((a, b) =>
+          (a.title ?? '')
+            .trim()
+            .toLowerCase()
+            .localeCompare((b.title ?? '').trim().toLowerCase())
+        );
       default:
         return sorted;
     }
